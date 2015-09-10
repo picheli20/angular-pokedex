@@ -1,0 +1,39 @@
+.pokemon-list{
+	width: 250px;
+	float: left;
+	border-right: 1px solid #ccc;
+	height: calc(80% - $menu-height);
+    top: $menu-height;
+    bottom:0;
+    position:fixed;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+.search{
+	padding: 5px;
+}
+
+.pokemon-item{
+	width: 100%;
+	padding: 10px;
+	text-transform: capitalize;
+	cursor: pointer;
+	transition: background-color .3s;
+	&:hover{
+		background-color: #ccc;
+	}
+
+	.fa{
+		display: none;
+		float: right;
+	}
+
+	&:hover .fa{
+		display: block;
+	}
+
+	&.active{
+		background-color: #999;
+	}
+}

@@ -1,0 +1,8 @@
+<div class="search">
+	<input type="text" ng-model="pokemonSearch" class="form-control" placeholder="Search by a pokemon!">
+</div>
+<div ng-repeat="pk in pokedex.pokemonList | orderBy:'id' | filter: { 'name' : pokemonSearch }" class="pokemon-item" ng-class="{'active' : pk.id == pokedex.detailId}" ng-click="pokedex.detail(pk.id)">
+	{{pk.name}} 
+	<i class="fa fa-spinner fa-pulse text-right" ng-show="pk.loading != 0"></i>
+	<i class="fa fa-angle-right" ng-show="pk.loading == 0"></i>
+</div>

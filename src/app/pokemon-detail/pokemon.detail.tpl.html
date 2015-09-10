@@ -1,0 +1,13 @@
+<div class="pokemon-detail" ng-show="pokemonDetail().loading == 0">
+	<h4>{{pokemonDetail().details.name}}</h4>
+	<br>
+	Attack : {{pokemonDetail().details.sp_atk}}<br>
+	Defense : {{pokemonDetail().details.sp_def}}<br>
+	Speed : {{pokemonDetail().details.speed}}<br>
+	Weight : {{pokemonDetail().details.weight}}
+	<br><br><br><br><br>
+	Description<br><br>
+	{{pokemonDetail().details.descriptions}}
+	<br><br><br><br>
+
+</div>

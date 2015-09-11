@@ -1,13 +1,96 @@
-<div class="pokemon-detail" ng-show="pokemonDetail().loading == 0">
-	<h4>{{pokemonDetail().details.name}}</h4>
-	<br>
-	Attack : {{pokemonDetail().details.sp_atk}}<br>
-	Defense : {{pokemonDetail().details.sp_def}}<br>
-	Speed : {{pokemonDetail().details.speed}}<br>
-	Weight : {{pokemonDetail().details.weight}}
-	<br><br><br><br><br>
-	Description<br><br>
-	{{pokemonDetail().details.descriptions}}
-	<br><br><br><br>
+<div class="pokemon-detail"  ng-show="!general.isLoading()">
+	<div class="title">
+		<h1><small>#{{pokemonDetail().details.national_id}}</small>{{pokemonDetail().details.name}}</h1>
+	</div>
+	<div class="image">
+		<img ng-src="{{pokemonDetail().getImage()}}">
+	</div>
+	<div class="content">
+		<div class="description">
+			<h3>Info</h3>
+			<p>{{pokemonDetail().description.description}}</p>
+		</div>
+		<div class="attribute">
+			<div class="skills">
+				<div class="title">
+					Attack
+				</div>
+				<div class="value">
+					{{pokemonDetail().details.sp_atk}}
+				</div>
+			</div>
+			<div class="skills">
+				<div class="title">
+					Defense
+				</div>
+				<div class="value">
+					{{pokemonDetail().details.sp_def}}
+				</div>
+			</div>
+			<div class="skills">
+				<div class="title">
+					Speed
+				</div>
+				<div class="value">
+					{{pokemonDetail().details.speed}}
+				</div>
+			</div>
+			<div class="skills">
+				<div class="title">
+					Weight
+				</div>
+				<div class="value">
+					{{pokemonDetail().details.weight}}
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
 
+		<div class="types">
+			<h3>Type</h3>
+			<div class="mainType background-color-{{type.name}}" ng-repeat="type in pokemonDetail().details.types">
+				{{type.name}}
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<div class="moves">
+			<h3>Moves</h3>
+			<h4 class="filter-title">Filter</h4>
+			<div class="filter-item" ng-click="pokemonDetail().toggleFilter('level up')" ng-class="{'active' : pokemonDetail().canShow('level up')}">
+				<i class="fa fa-level-up"></i> Level Up
+			</div>
+			<div class="filter-item" ng-click="pokemonDetail().toggleFilter('machine')" ng-class="{'active' : pokemonDetail().canShow('machine')}">
+				<i class="fa fa-desktop"></i> Machine
+			</div>
+			<div class="filter-item" ng-click="pokemonDetail().toggleFilter('tutor')" ng-class="{'active' : pokemonDetail().canShow('tutor')}">
+				<i class="fa fa-male"></i> Tutor
+			</div>
+			<div class="filter-item" ng-click="pokemonDetail().toggleFilter('egg move')" ng-class="{'active' : pokemonDetail().canShow('egg move')}">
+				<i class="fa fa-circle"></i> Egg Move
+			</div>
+			<div class="filter-item" ng-click="pokemonDetail().toggleFilter('other')" ng-class="{'active' : pokemonDetail().canShow('other')}">
+				<i class="fa fa-question"></i> Other
+			</div>
+			<div style="clear: both;"></div>
+			<div class="move-container" ng-repeat="type in pokemonDetail().details.moves | orderBy : 'level'" ng-show="pokemonDetail().canShow(type.learn_type)">
+				<div class="move-header">
+					<div class="move-learn-type">
+						<i class="fa" ng-class="{'fa-desktop' : type.learn_type == 'machine', 
+												 'fa-level-up' : type.learn_type == 'level up', 
+												 'fa-male' : type.learn_type == 'tutor',
+												 'fa-circle' : type.learn_type == 'egg move', 
+												 'fa-question' : type.learn_type == 'other'}"></i>
+					</div>
+					<div class="move-title"><b>{{type.name}}</b><span ng-show="type.learn_type == 'level up'"> at level {{type.level}}</span></div>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+	<div class="comment">
+		<h1>Comments</h1>
+		<div class="comment">
+			
+		</div>
+	</div>
 </div>

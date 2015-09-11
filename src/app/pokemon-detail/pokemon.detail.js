@@ -3,16 +3,18 @@
 
   angular
     .module('restPokedex')
-    .controller('DetailController', ['$scope', 'Pokedex', '$http', 'baseUrl', '$state', DetailController])
+    .controller('DetailController', ['$scope', 'Pokedex', '$http', 'baseUrl', '$state', 'Comment', DetailController])
     .directive('pokemonDetail', pokemonDetail);
 
-    function DetailController($scope, Pokedex, $http, baseUrl, $state){
+    function DetailController($scope, Pokedex, $http, baseUrl, $state, Comment){
       var pokeId = $state.params.pokemonId;
       if (!pokeId || isNaN(pokeId)) $state.go("app");
 
       $scope.pokemonDetail = function(){
         return Pokedex.detailPkn;
       }
+
+      $scope.comment = new Comment(pokeId);
 
     }
 

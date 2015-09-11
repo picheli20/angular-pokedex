@@ -21,7 +21,7 @@
 	cursor: pointer;
 	transition: background-color .3s;
 	&:hover{
-		background-color: #ccc;
+		//background-color: #ccc;
 	}
 
 	.fa{
@@ -34,6 +34,6 @@
 	}
 
 	&.active{
-		background-color: #999;
+		background-color: #6E86AB;
 	}
 }

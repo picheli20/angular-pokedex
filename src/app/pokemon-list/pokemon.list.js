@@ -3,14 +3,14 @@
 
   angular
     .module('restPokedex')
-    .directive('pokemonList', pokemonList);
+    .directive('pokemonList', [pokemonList]);
 
     function pokemonList() {
       return {
         scope: {
           pokedex: '=data'
         },
-        templateUrl: 'app/pokemon-list/pokemon.list.tpl.html',
+        templateUrl: 'app/pokemon-list/pokemon.list.tpl.html'
       };
     }
 

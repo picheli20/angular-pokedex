@@ -1,4 +1,6 @@
-<div class="pokemon-list" pokemon-list data="pokedex"></div>
+<div ng-class="{'isShowing' : !onHome()}">
+	<div class="pokemon-list" pokemon-list data="pokedex"></div>
+</div>
 <div class="pokemon-select">
 	<img src="assets/images/pokemon.png">
 	<div class="text">Select a Pokemon!</div>

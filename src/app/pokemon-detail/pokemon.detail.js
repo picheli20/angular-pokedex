@@ -16,6 +16,11 @@
 
       $scope.comment = new Comment(pokeId);
 
+      $scope.goHome = function(){
+        $state.go("app");
+        Pokedex.detailPkn = null;
+      }
+
     }
 
     function pokemonDetail() {

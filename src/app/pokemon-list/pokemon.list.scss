@@ -20,6 +20,7 @@
 	text-transform: capitalize;
 	cursor: pointer;
 	transition: background-color .3s;
+	font-size: 16px;
 	&:hover{
 		//background-color: #ccc;
 	}
@@ -35,5 +36,34 @@
 
 	&.active{
 		background-color: #6E86AB;
+	}
+}
+@media screen and (max-width: $min-width){
+	.search input{
+		height: 50px !important;
+		font-size: 20px;
+	}
+	.pokemon-list{
+		width: 100%;
+	}
+	.pokemon-item{
+		font-size: 20px;
+		padding: 20px;
+	}
+	.no-result{
+		font-size: 20px;
+	}
+}
+@media screen and (max-width: $width-phone){
+	.search input{
+		height: 70px !important;
+		font-size: 30px;
+	}
+	.pokemon-item{
+		font-size: 30px;
+		padding: 30px;
+	}
+	.no-result{
+		font-size: 30px;
 	}
 }

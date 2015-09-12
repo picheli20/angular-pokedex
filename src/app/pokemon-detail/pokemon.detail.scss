@@ -3,8 +3,9 @@
 	height: 100%;
 	float: right;
     background-color: #fff;
+    display: table;
 	.image{
-		width: 220px;
+		width: 190px;
 		float: left;
 		text-align: center;
 		img{
@@ -118,11 +119,105 @@
         width: 30%;
         height: 500px;
         float: right;
-        background-color: #ccc;
+        margin-top: -50px;
+        padding-right: 20px;
+        .comment-list{
+            margin-top: 10px;
+        }
+        .media-body{
+            border-bottom: 1px solid #ccc;
+        }
+
+        .comment-title{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .goBack{
+        display: none;
     }
 }
 
+@media screen and (max-width: $min-width){
+    .pokemon-detail{
+        z-index: 40;
+        width: 100%;
+        .content{
+            width: calc(100% - 250px);
+        }
+        .attribute{
+            max-width: 100%;
+        }
+        .title{
+            max-width: 100%;
+        }
+    }
 
+    .goBack{
+        display: block !important;
+        width: 100%;
+        background-color: #333;
+        height: 80px;
+        font-size: 30px;
+        line-height: 80px;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    .comment{
+        width: 70% !important;
+        margin-left: 15%;
+        padding-top: 30px !important;
+        float: none !important;
+    }
+
+    .clearSmall{
+        clear: both;
+    }
+    .pokemon-select{
+        display: none;
+    }
+
+    .isShowing{
+        display: none;
+    }
+}
+
+@media screen and (max-width: $width-phone){
+
+    .pokemon-detail{
+        z-index: 40;
+        width: 100%;
+        padding: 10px;
+        .image{
+            width: 100%;
+            float: left;
+            text-align: center;
+            img{
+                width: 150px;
+                height: 150px;
+                margin-left: 10px;
+            }
+        }
+        .content{
+            width: 100%;
+        }
+        .attribute{
+            max-width: 100%;
+        }
+        .title{
+            max-width: 100%;
+        }
+    }
+    
+    .comment{
+        width: 100% !important;
+        margin-left: 0%;
+        padding-top: 30px !important;
+        float: none !important;
+    }
+}
 
 .background-color-bug {
     background: -webkit-linear-gradient(180deg, #729f3f 50%, #729f3f 50%);

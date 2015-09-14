@@ -8,10 +8,13 @@
     function CommentFact(toastr, General, $rootScope){
         function Comment(pokeID){
         	this.data = [];
+        	var ParseObject, ParseTable, ParseQuery;
+        	/* jshint ignore:start */
         	Parse.initialize("p6ntLoHMmgB2aTR62L3QkWZ4MkriLHHYjPwyguNj", "K5K2E1IjdGwrRHunKiOT0KgnSYU9SOnm9P0lttfo");
-			var ParseObject = Parse.Object.extend("Pokemon_Comment");
-			var ParseTable = new ParseObject();
-			var ParseQuery = new Parse.Query(ParseObject);
+			ParseObject = Parse.Object.extend("Pokemon_Comment");
+			ParseQuery = new Parse.Query(ParseObject);
+			/* jshint ignore:end */
+			ParseTable = new ParseObject();
 			ParseQuery.id = 'pokeID';
 
 			this.model = {
@@ -26,20 +29,20 @@
 				if(!this.model.name){
 					toastr.error("Please insert A valid name.", "Invalid Text");
 					return;
-				};
+				}
 
 				if(!this.model.email || !General.isValid(this.model.email)){
 					toastr.error("Please insert a valid e-mail.", "Invalid Text");
 					return;
-				};
+				}
 
-				if(!this.model.email || this.model.email == ""){
+				if(!this.model.email || this.model.email === ""){
 					toastr.error("Please insert a valid comment.", "Invalid Text");
 					return;
-				};
-				this.model.date = (new Date).getTime();
+				}
+				this.model.date = (new Date()).getTime();
 				General.loading(true);
-				ParseTable.save(this.model).then(function(object) {
+				ParseTable.save(this.model).then(function() {
 					toastr.success("Comment sucessful added!", "Success!");
 					General.loading(false);
 					self.getComments();
@@ -67,7 +70,9 @@
 								"pokeID" : data[i].get("pokeID"),
 							});
 						}
+						/* jshint ignore:start */
 						setTimeout($rootScope.$apply());
+						/* jshint ignore:end */
 					},
 					error: function(err){
 						console.error(err);
@@ -78,7 +83,7 @@
 			this.getComments();
         }
 
-    	return Comment; 
+    	return Comment;
     }
 
 })();

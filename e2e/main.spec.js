@@ -1,21 +1,27 @@
 'use strict';
 
-describe('The main view', function () {
+describe('Pokedex Home', function () {
   var page;
 
   beforeEach(function () {
-    browser.get('/index.html');
+    browser.get('/#/pokedex');
     page = require('./main.po');
   });
 
-  it('should include jumbotron with correct data', function() {
-    expect(page.h1El.getText()).toBe('\'Allo, \'Allo!');
-    expect(page.imgEl.getAttribute('src')).toMatch(/assets\/images\/yeoman.png$/);
-    expect(page.imgEl.getAttribute('alt')).toBe('I\'m Yeoman');
+  it('check the header title', function() {
+    expect(page.title.getText()).toBe('Pokedex');
+    browser.waitForAngular();
   });
 
-  it('should list more than 5 awesome things', function () {
-    expect(page.thumbnailEls.count()).toBeGreaterThan(5);
+  it('should has no result', function() {
+    page.search.sendKeys("adc");
+    expect(page.listOfPokemon.count()).toBe(0);
+    expect(page.noResult.isDisplayed()).toBeTruthy();
+  });
+
+  it('should has a result', function() {
+    page.search.sendKeys("Pika");
+    expect(page.listOfPokemon.count()).toBe(1);
   });
 
 });

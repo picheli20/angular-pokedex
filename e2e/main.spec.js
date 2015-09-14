@@ -20,7 +20,7 @@ describe('Pokedex Home', function () {
   });
 
   it('should has a result', function() {
-    page.search.sendKeys("Pika");
+    page.search.sendKeys("Bulba");
     expect(page.listOfPokemon.count()).toBe(1);
   });
 

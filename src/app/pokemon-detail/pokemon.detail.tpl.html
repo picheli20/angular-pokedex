@@ -116,7 +116,7 @@
 		<div class="comment-list" ng-repeat="cm in comment.data | orderBy: '-date'">
 			<div class="media-body">
 		      <h4 class="media-heading">{{cm.name}}</h4>
-		      <p>{{cm.comment}}<small> - on {{cm.date}}</small></p>
+		      <p>{{cm.comment}}<small> - on {{cm.date | date:"MM/dd/yyyy 'at' h:mma"}}</small></p>
 		    </div>
 		</div>
 		<div ng-show="comment.data.length == 0" class="text-center">No coments found.</div>

@@ -16,7 +16,11 @@ var detail = function() {
         if(isEquals){
             expect(this.comments.get(0).getText()).toContain(this.lastComment);
         }else{
-            expect(this.comments.get(0).getText()).not.toContain(this.lastComment);
+            if(this.lastComment === ""){
+                expect(this.comments.get(0).getText()).not.toEqual(this.lastComment);
+            }else{
+                expect(this.comments.get(0).getText()).not.toContain(this.lastComment);
+            }
         }
     };
 

@@ -3,6 +3,12 @@
 describe('Pokedex Detail', function () {
   var detail;
 
+  function checkComment(bool){
+    it('should verify if has comment or not ('+bool+')', function(){
+      detail.checkLastComment(bool);
+    });
+  }
+
   beforeEach(function () {
     browser.get('/#/pokedex/1');
     detail = require('./detail.po');
@@ -13,15 +19,38 @@ describe('Pokedex Detail', function () {
     detail.setDate();
     var name = detail.sendComment("[Test] " + detail.date, "test@test.com", "Comment...");
   });
-  it('should have the comment', function(){
-    detail.checkLastComment(true);
+  
+  checkComment(true);
+
+  it('should block with wrong email', function() {
+    browser.waitForAngular();
+    detail.setDate();
+    var name = detail.sendComment("[Test] " + detail.date, "test", "Comment...");
   });
 
-  it('should block without name', function() {
+  checkComment(false);
+
+  it('should block with wrong email with @', function() {
     browser.waitForAngular();
-    var name = detail.sendComment("", "test@test.com", "Comment...");
+    detail.setDate();
+    var name = detail.sendComment("[Test] " + detail.date, "test@dads", "Comment...");
   });
-  it('should havent the comment', function(){
-    detail.checkLastComment(false);
+
+  checkComment(false);
+
+  it('should block with no comment', function() {
+    browser.waitForAngular();
+    detail.setDate();
+    var name = detail.sendComment("[Test] " + detail.date, "test@dads", "");
   });
+
+  checkComment(false);
+
+  it('should block with no name', function() {
+    browser.waitForAngular();
+    var name = detail.sendComment("", "test@dads", "bla bla bla...");
+  });
+
+  checkComment(false);
+
 });

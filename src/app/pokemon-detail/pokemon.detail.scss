@@ -70,12 +70,13 @@
         .filter-item{
             float: left;
             padding: 5px;
-            background-color: #ccc;
+            background-color: $move-light;
+            border: 1px solid $move-dark;
             border-radius: 5px;
             margin: 5px;
             cursor: pointer;
             &.active{
-                background-color: #484848;
+                background-color: $move-dark;
                 color: #fff;
             }
         }
@@ -83,19 +84,19 @@
             margin-top: 10px;
     		.move-header{
     			width: 100%;
-    			background-color: #ccc;
+    			background-color: $move-light;
     			height: 50px;
     			border-radius: 5px;
     			border-top-right-radius: 5px;
     			margin-bottom: 5px;
-    			border: 1px solid #484848;
+    			border: 1px solid $move-dark;
     			.move-learn-type{
     				width: 50px;
     				float: left;
     				font-size: 30px;
     				text-align: center;
     			    padding-right: 0px;
-    			    background-color: #484848;
+    			    background-color: $move-dark;
     			    color: #fff;
     				border-top-left-radius: 3px;
     				border-bottom-left-radius: 3px;
@@ -125,7 +126,7 @@
             margin-top: 10px;
         }
         .media-body{
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid $move-light;
         }
 
         .comment-title{

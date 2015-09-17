@@ -2,7 +2,7 @@
 
 This project was build using [Pokéapi](pokeapi.co), [Yeoman](http://yeoman.io/), [AngularJS](https://angularjs.org/), [generator-gulp-angular](https://github.com/Swiip/generator-gulp-angular) and the comment's DB was made using [Parse](parse.com).
 
-You can access a demo clicking [here](http://picheli.com.br/pokemon).
+You can access a demo clicking [here](http://fabiopicheli.com/pokemon/).
 
 ##Dependencies
 

@@ -1,56 +1,87 @@
 'use strict';
 
 describe('Pokedex Detail', function () {
-  var detail;
+  var detail, commentsToTest;
 
-  function checkComment(bool){
-    it('should verify if has comment or not ('+bool+')', function(){
-      detail.checkLastComment(bool);
-    });
-  }
 
   beforeEach(function () {
     browser.get('/#/pokedex/1');
     detail = require('./detail.po');
   });
 
-  it('should send a comment and check', function() {
-    browser.waitForAngular();
-    detail.setDate();
-    var name = detail.sendComment("[Test] " + detail.date, "test@test.com", "Comment...");
-  });
-  
-  checkComment(true);
+  function checkComment(bool, i){
+    it('should verify if has comment or not ('+bool+' | ' + i + ')', function(){
+      detail.checkLastComment(bool);
+    });
+  };
 
-  it('should block with wrong email', function() {
-    browser.waitForAngular();
-    detail.setDate();
-    var name = detail.sendComment("[Test] " + detail.date, "test", "Comment...");
-  });
+  var commentsToTest = [
+    {
+      "name" : "[0] " + (new Date()),
+      "email" : "test@test.com",
+      "comment" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis diam laoreet, vehicula magna et, hendrerit nunc. Suspendisse fermentum viverra commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi lobortis ante eget maximus malesuada",
+      "isValid" : true
+    },
+    {
+      "name" : "[1] " + (new Date()),
+      "email" : "test",
+      "comment" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis diam laoreet, vehicula magna et, hendrerit nunc. Suspendisse fermentum viverra commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi lobortis ante eget maximus malesuada",
+      "isValid" : false
+    },
+    {
+      "name" : "[2] " + (new Date()),
+      "email" : "test@dasdas",
+      "comment" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis diam laoreet, vehicula magna et, hendrerit nunc. Suspendisse fermentum viverra commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi lobortis ante eget maximus malesuada",
+      "isValid" : false
+    },
+    {
+      "name" : "[3] " + (new Date()),
+      "email" : "test@dasdas",
+      "comment" : "",
+      "isValid" : false
+    },
+    {
+      "name" : "[4] " + (new Date()),
+      "email" : "",
+      "comment" : "",
+      "isValid" : false
+    },
+    {
+      "name" : "",
+      "email" : "test@test.com",
+      "comment" : "",
+      "isValid" : false
+    },
+    {
+      "name" : "",
+      "email" : "",
+      "comment" : "Bla Bla bla....",
+      "isValid" : false
+    },
+    {
+      "name" : "",
+      "email" : "test@test.com",
+      "comment" : "Bla Bla bla....",
+      "isValid" : false
+    },
+    {
+      "name" : "",
+      "email" : "",
+      "comment" : "",
+      "isValid" : false
+    }
+  ];
 
-  checkComment(false);
+  for (var i = 0; i < commentsToTest.length; i++) {
+    var comment = commentsToTest[i];
 
-  it('should block with wrong email with @', function() {
-    browser.waitForAngular();
-    detail.setDate();
-    var name = detail.sendComment("[Test] " + detail.date, "test@dads", "Comment...");
-  });
+    it('should test a comment creation (' + i + ')', function() {
+      browser.waitForAngular();
+      var name = detail.sendComment(comment.name, comment.email, comment.comment);
+    });
 
-  checkComment(false);
+    checkComment(comment.isValid, i);
 
-  it('should block with no comment', function() {
-    browser.waitForAngular();
-    detail.setDate();
-    var name = detail.sendComment("[Test] " + detail.date, "test@dads", "");
-  });
-
-  checkComment(false);
-
-  it('should block with no name', function() {
-    browser.waitForAngular();
-    var name = detail.sendComment("", "test@dads", "bla bla bla...");
-  });
-
-  checkComment(false);
+  };
 
 });

@@ -4,22 +4,39 @@ This project was build using [Pokéapi](pokeapi.co), [Yeoman](http://yeoman.io/)
 
 You can access a demo clicking [here](http://picheli.com.br/pokemon).
 
-##Requirements
+##Dependencies
+
+To run this project you need to have:
 
 * NodeJS ([link](https://nodejs.org/))
 * Bower ([link](http://bower.io/))
 * Gulp ([link](http://gulpjs.com/))
 
-##Installation
+##Setup the project
 
-After the installation of all requirements tools, you need to download all the NodeJS dependencies running this command:
+1.Install the depedencies above.
+
+2.Clone the project.
+
+```
+git clone https://picheli20@bitbucket.org/picheli20/angular-pokedex.git
+
+```
+
+3.Go into the project folder
+
+```
+cd angular-pokedex
+
+```
+
+4.Install the gulp dependencies
 
 ```
 sudo npm install
 
 ```
-
-And all the bower dependencies.
+5.Install the bower dependencies
 
 ```
 bower install
@@ -28,13 +45,15 @@ bower install
 
 ##Server
 
-To start a local server go to main folder and run the command:
+To start a local server go to project folder and run the command:
 
 
 ```
 sudo gulp serve
 
 ```
+
+Access [localhost:3000](localhost:3000) 
 
 ##Testing
 

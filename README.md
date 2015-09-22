@@ -20,27 +20,23 @@ To run this project you need to have:
 
 ```
 git clone https://picheli20@bitbucket.org/picheli20/angular-pokedex.git
-
 ```
 
 3.Go into the project folder
 
 ```
 cd angular-pokedex
-
 ```
 
 4.Install the gulp dependencies
 
 ```
 sudo npm install
-
 ```
 5.Install the bower dependencies
 
 ```
 bower install
-
 ```
 
 ##Server
@@ -50,7 +46,6 @@ To start a local server go to project folder and run the command:
 
 ```
 sudo gulp serve
-
 ```
 
 Access [localhost:3000](localhost:3000) 
@@ -61,7 +56,6 @@ This project has a e2e test, you can run the test with this command:
 
 ```
 sudo gulp test
-
 ```
 
 ##Building
@@ -70,5 +64,4 @@ To build a server's deploy version, just run the above code and the deploy versi
 
 ```
 sudo gulp test
-
 ```

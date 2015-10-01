@@ -19,7 +19,7 @@ To run this project you need to have:
 2.Clone the project.
 
 ```
-git clone https://picheli20@bitbucket.org/picheli20/angular-pokedex.git
+git clone https://github.com/picheli20/angular-pokedex.git
 ```
 
 3.Go into the project folder
